@@ -10,11 +10,11 @@ import (
 )
 
 type Product struct {
-	ID       string   `json:"id"`
-	Name     string   `json:"name"`
-	Quantity int      `json:"quantity"`
-	UnitCost string   `json:"unit_cost"`
-	Measure  *Measure `json:"measure"`
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	Quantity int    `json:"quantity"`
+	UnitCost string `json:"'unit_cost"`
+	Measure  string `json:"'measure' Единица измерения"`
 }
 
 type Measure struct {
@@ -128,8 +128,8 @@ func deleteProduct(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 	r := mux.NewRouter()
-	products = append(products, Product{ID: "1", Name: "Апельсин", Quantity: 2, UnitCost: "16", Measure: &Measure{ID: "1", Name: "Кг"}})
-	products = append(products, Product{ID: "2", Name: "Шоколад", Quantity: 2, UnitCost: "126", Measure: &Measure{ID: "2", Name: "ШТ"}})
+	products = append(products, Product{ID: "1", Name: "Апельсин", Quantity: 2, UnitCost: "16", Measure: "Килограмм"})
+	products = append(products, Product{ID: "2", Name: "Шоколад", Quantity: 2, UnitCost: "126", Measure: "Килограмм"})
 	measures = append(measures, Measure{ID: "1", Name: "Килограмм"})
 	measures = append(measures, Measure{ID: "2", Name: "Штука"})
 	r.HandleFunc("/products", getProducts).Methods("GET")
